@@ -1,3 +1,6 @@
+- name: Run Tests
+  env: 
+    MONGO_DB_PW: ${{ secrets.MONGO_DB_PW }}
 on:
   push:
     branches:

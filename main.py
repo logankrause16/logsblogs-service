@@ -1,18 +1,12 @@
 # pylint: disable=import-error, missing-module-docstring
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from bson import ObjectId
-from schematics.models import Model
-import settings
+from mongodb_config import mongo_db_config
 from pymongo import MongoClient
 
 
-# class Comics(Model):
-#     comic_id= ObjectId()
-
 app = FastAPI()
-
-client = MongoClient(settings.mongodb_uri)
+client = MongoClient(mongo_db_config.get('DB_URI'))
 
 app.add_middleware(
     CORSMiddleware,
@@ -21,6 +15,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# print(client.server_info())
 
 @app.get("/v1/api/")
 async def main_page():
@@ -34,3 +30,4 @@ def get_all():
     """
     Get everything
     """
+    pass
