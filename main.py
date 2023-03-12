@@ -27,12 +27,15 @@ async def main_page():
     return {"initial_message": "Welcome to the Home Page!"}
 
 @app.get("/v1/api/black-series/get-all")
-def get_all():
+async def get_all():
     """
     Get everything
     """
-    db = client['mydatabase']
-    collection = db['mycollection']
+    db = client['logan-interests']
+    collection = db['black-series']
+    results = collection.find({}, {'_id': 0})
+
+    return list(results)
 
 
 @app.get("/v1/api/black-series/get-by-id")
