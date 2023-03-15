@@ -4,8 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from pymongo import MongoClient
 from mongodb_config import mongo_db_config
 
-print(mongo_db_config.get('DB_URI'))
-
 app = FastAPI()
 client = MongoClient(mongo_db_config.get('DB_URI'))
 
@@ -16,8 +14,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# print(client.server_info())
 
 @app.get("/v1/api/")
 async def main_page():
