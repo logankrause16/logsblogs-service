@@ -33,7 +33,6 @@ async def get_all():
 
     return list(results)
 
-
 @app.get("/v1/api/black-series/get-by-id")
 def get_by_id():
     """
@@ -48,7 +47,6 @@ def get_by_name():
     """
     pass
 
-# Post request
 @app.post("/v1/api/black-series/add")
 def add():
     """
